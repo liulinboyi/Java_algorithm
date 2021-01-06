@@ -1,4 +1,4 @@
-package 线性查找.src;
+package InsertSort.src;
 
 public class ArrayGenerator {
     private ArrayGenerator() {

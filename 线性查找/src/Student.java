@@ -1,3 +1,5 @@
+package 线性查找.src;
+
 import java.util.Objects;
 
 public class Student {

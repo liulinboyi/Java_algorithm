@@ -1,6 +1,10 @@
+package InsertSort.src;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+
+import compare.SortingHelper;
 
 public class InsertSort {
     private InsertSort() {
@@ -42,14 +46,13 @@ public class InsertSort {
                 }
             }
 
-
-//            for (int j = i + 1; j > 0; j--) {
-//                if (j <= arr.length - 1 && arr[j].compareTo(arr[j - 1]) < 0) {
-//                    swap(arr, j - 1, j);
-//                } else {
-//                    break;
-//                }
-//            }
+            // for (int j = i + 1; j > 0; j--) {
+            // if (j <= arr.length - 1 && arr[j].compareTo(arr[j - 1]) < 0) {
+            // swap(arr, j - 1, j);
+            // } else {
+            // break;
+            // }
+            // }
         }
         return arr;
     }
@@ -58,7 +61,6 @@ public class InsertSort {
 //        Integer[] arr = {2, 3, 5, 7, 1, 8, 9, 0, 2};
 //        Integer[] result = InsertSort.sort(arr);
 //        System.out.println(Arrays.toString(result));
-
 
         int[] dataSize = {10000, 100000}; // 大规模测试
 
@@ -78,9 +80,9 @@ public class InsertSort {
 
             System.out.println(n + "数组准备 ok");
 
-//            for (int i = 0; i < 10; i++) {
-//                SortingHelper.sortTest("InsertSort", all[i]);
-//            }
+            // for (int i = 0; i < 10; i++) {
+            // SortingHelper.sortTest("InsertSort", all[i]);
+            // }
             SortingHelper.sortTest("InsertSort", all[0]);
         }
     }

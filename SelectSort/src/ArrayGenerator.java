@@ -1,3 +1,5 @@
+package SelectSort.src;
+
 public class ArrayGenerator {
     private ArrayGenerator() {
     }

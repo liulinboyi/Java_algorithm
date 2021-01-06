@@ -1,3 +1,8 @@
+package compare;
+
+import InsertSort.src.InsertSort;
+import SelectSort.src.SelectionSort;
+
 public class SortingHelper {
     private SortingHelper() {
     }

@@ -1,6 +1,9 @@
+package SelectSort.src;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import compare.SortingHelper;
 
 public class SelectionSort {
     private SelectionSort() {
@@ -23,7 +26,7 @@ public class SelectionSort {
             copyArray.add(min);
             arr.remove(miniIndex);
         }
-//        System.out.println(copyArray);
+        // System.out.println(copyArray);
         return copyArray.toArray(new Integer[0]);
     }
 
@@ -78,16 +81,16 @@ public class SelectionSort {
             // 维持循环不变量
             Collections.swap(arr, miniIndex, i);
         }
-//        System.out.println(arr);
+        // System.out.println(arr);
         return arr.toArray(new Integer[0]);
     }
 
     public static void main(String[] args) {
-//        Integer[] array = {2, 3, 4, 6, 1, 8, 9, 0, 2};
-//        System.out.println(Arrays.toString(SelectionSort.sort2(array)));
-//        System.out.println(Arrays.deepToString(SelectionSort.sort(array)));
+        // Integer[] array = {2, 3, 4, 6, 1, 8, 9, 0, 2};
+        // System.out.println(Arrays.toString(SelectionSort.sort2(array)));
+        // System.out.println(Arrays.deepToString(SelectionSort.sort(array)));
 
-        int[] dataSize = {10000, 100000}; // 大规模测试
+        int[] dataSize = { 10000, 100000 }; // 大规模测试
 
         for (int n : dataSize) {
 
@@ -105,9 +108,9 @@ public class SelectionSort {
 
             System.out.println(n + "数组准备 ok");
 
-//            for (int i = 0; i < 10; i++) {
-//                SortingHelper.sortTest("SelectionSort", all[i]);
-//            }
+            // for (int i = 0; i < 10; i++) {
+            // SortingHelper.sortTest("SelectionSort", all[i]);
+            // }
             SortingHelper.sortTest("SelectionSort", all[0]);
         }
 

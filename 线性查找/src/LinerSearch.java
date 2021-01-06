@@ -1,3 +1,5 @@
+package 线性查找.src;
+
 public class LinerSearch<E> {
     // 将构造函数设置私有
     private LinerSearch() {
