@@ -39,6 +39,7 @@ public class InsertSort {
     public static <E extends Comparable> E[] sort2(E[] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = i; j - 1 >= 0; j--) {
+                // 往前看一个元素
                 if (arr[j].compareTo(arr[j - 1]) < 0) {
                     swap(arr, j - 1, j);
                 } else {
