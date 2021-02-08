@@ -48,6 +48,7 @@ public class SelectionSort {
 
     public static Integer[] sort2(Integer[] array) {
         // 循环不变量 arr[0...i)是有序的，arr[i...n)是无序的
+        // i-n中最小值放到索引i处
         for (int i = 0; i < array.length; i++) {
             int minIndex = i;
             for (int j = i + 1; j < array.length; j++) {
