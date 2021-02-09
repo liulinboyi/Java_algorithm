@@ -97,6 +97,7 @@ public class Array<E> {
 //            data[i] = data[i - 1];
 //        }
         // 将index后面的元素向后移动一个索引
+        // 倒循环，数据迁移最好使用data[i + 1] = data[i]这种形式，不要出现index-1，易出现负数
         for (int i = size - 1; i >= index; i--) {
             data[i + 1] = data[i];
         }
@@ -181,8 +182,11 @@ public class Array<E> {
         }
         E removed = data[index];
         // 将index后面的元素都向前移动一个索引
-        for (int i = index; i < size; i++) {
-            data[i] = data[i + 1];
+        // 当index=2时，循环从索引i=3开始，索引为2的数据被索引为3的数据覆盖
+        // 依次类推：
+        //当index=i时，循环从索引i=index+1开始，索引为i-1的数据被索引为i的数据覆盖
+        for (int i = index + 1; i < size; i++) {
+            data[i - 1] = data[i];
         }
         size--;
         // 最后一个元素仍有值，现在置空

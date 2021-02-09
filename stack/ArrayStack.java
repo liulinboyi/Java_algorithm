@@ -40,7 +40,7 @@ public class ArrayStack<E> implements Stack<E> {
 
     @Override
     public E peek() {
-        int top = array.getSize() - 1;
+//        int top = array.getSize() - 1;
 //        return array.get(top);
         return array.getLast();
     }
