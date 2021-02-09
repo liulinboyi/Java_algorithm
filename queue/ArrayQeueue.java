@@ -2,9 +2,14 @@ package queue;
 
 import array.src.Array;
 
+/**
+ * 数组队列
+ *
+ * @param <E>
+ */
 public class ArrayQeueue<E> implements Queue<E> {
 
-    private Array<E> array;
+    private final Array<E> array;
 
     public ArrayQeueue(int capacity) {
         array = new Array(capacity);
@@ -17,6 +22,10 @@ public class ArrayQeueue<E> implements Queue<E> {
     @Override
     public int getSize() {
         return array.getSize();
+    }
+
+    public int getCapacity() {
+        return array.getCapacity();
     }
 
     @Override
