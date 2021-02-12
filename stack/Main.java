@@ -1,6 +1,7 @@
 package stack;
 
 import queue.ArrayQeueue;
+import queue.LoopQueue;
 import queue.Queue;
 
 import java.util.Random;

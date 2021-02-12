@@ -5,8 +5,6 @@ public interface Stack<E> {
 
     boolean isEmpty();
 
-    int getCapacity();
-
     void push(E e);
 
     E pop();
