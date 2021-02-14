@@ -4,8 +4,8 @@ public class Solution {
 
     public static ListNode reverseList(ListNode head) {
         ListNode prev = null;
-        ListNode cur = head;
-        ListNode next = cur.next;
+        ListNode cur = head == null ? null : head;
+        ListNode next = cur == null ? null : cur.next;
 
         // ①
         //  prev   cur   next
@@ -50,7 +50,9 @@ public class Solution {
 
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5};
-        ListNode listNode = new ListNode(arr);
+//        ListNode listNode = new ListNode(arr);
+        ListNode listNode = new ListNode();
+        System.out.println(listNode);
         ListNode res = reverseList(listNode);
         System.out.println(res);
     }
