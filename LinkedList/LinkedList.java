@@ -52,12 +52,30 @@ public class LinkedList<E> {
         }
         // 取链表index当前位置的值
         Node cur = dummyHead.next;
-        for (int i = 0; i < index; i++) {
-            // 此时此处当cur取第1个位置时
-            cur = cur.next;
-            // 赋值操作后，此时cur为2的位置
+//        for (int i = 0; i < index; i++) {
+//            // 此时此处当cur取第1个位置时
+//            cur = cur.next;
+//            // 赋值操作后，此时cur为2的位置
+//        }
+//        return cur.e;
+        return recursionGet(cur, index, 0);
+    }
+
+    private E recursionGet(Node cur, int index, int deep) {
+        generete(deep);
+        System.out.print("Call: ");
+        System.out.println("cur: " + cur + " index: " + index);
+        if (index == 0) {
+            return cur.e;
+        } else {
+            Node c = cur.next;
+            return recursionGet(c, index - 1, deep + 1);
         }
-        return cur.e;
+    }
+
+    private static void generete(int deep) {
+        for (int i = 0; i < deep; i++)
+            System.out.print("--");
     }
 
     public E getFirst() {
@@ -111,39 +129,57 @@ public class LinkedList<E> {
         return false;
     }
 
-    public void add(int index, E e) {
-        // index 可以等于size，等同于在链表末尾添加元素
-        if (index < 0 || index > size) {
-            throw new IllegalArgumentException("Index is Error.");
+    private Node recursionAdd(Node node, int index, E e, int deep) {
+        generete(deep);
+        System.out.println("Call: " + node + " index: " + index);
+        if (index == 0) {
+            Node newNode = new Node(e);
+            newNode.next = node;
+            return newNode;
         }
-
-        Node prev = dummyHead;
-        // 找到需要添加位置的前一个位置
-        for (int i = 0; i < index; i++) {
-            prev = prev.next;
-        }
-//            Node newNode = new Node(e);
-//            newNode.next = prev.next;
-//            prev.next = newNode;
-
-        // 例如我想在位置为2的地方插入元素10，此时找到的prev就是位置为1
-        // 将当前新建的node节点的next改指向位置为1的prev的next
-        // 将prev的next改指向新建的node
-        // 实例如下图：
-        // 0 -> 1 ->  2 -> 3 -> null
-        //           /|\
-        //           /
-        //         10
-
-        // 0 -> 1 ->  2 -> 3 -> null
-        //       \
-        //      \|/
-        //      10
-
-        prev.next = new Node(e, prev.next);
-        size++;
-
+        node.next = recursionAdd(node.next, index - 1, e, deep + 1);
+        return node;
     }
+
+    public void add(int index, E e) {
+        dummyHead.next = recursionAdd(dummyHead.next, index, e, 0);
+        size++;
+    }
+
+
+//    public void add(int index, E e) {
+//        // index 可以等于size，等同于在链表末尾添加元素
+//        if (index < 0 || index > size) {
+//            throw new IllegalArgumentException("Index is Error.");
+//        }
+//
+//        Node prev = dummyHead;
+//        // 找到需要添加位置的前一个位置
+//        for (int i = 0; i < index; i++) {
+//            prev = prev.next;
+//        }
+////            Node newNode = new Node(e);
+////            newNode.next = prev.next;
+////            prev.next = newNode;
+//
+//        // 例如我想在位置为2的地方插入元素10，此时找到的prev就是位置为1
+//        // 将当前新建的node节点的next改指向位置为1的prev的next
+//        // 将prev的next改指向新建的node
+//        // 实例如下图：
+//        // 0 -> 1 ->  2 -> 3 -> null
+//        //           /|\
+//        //           /
+//        //         10
+//
+//        // 0 -> 1 ->  2 -> 3 -> null
+//        //       \
+//        //      \|/
+//        //      10
+//
+//        prev.next = new Node(e, prev.next);
+//        size++;
+//
+//    }
 
     public void addFirst(E e) {
 //        Node node = new Node(e);
@@ -223,9 +259,7 @@ public class LinkedList<E> {
         System.out.println(linkedList);
     }
 
-    public static void main(String[] args) {
-
-
+    private static void test1() {
         LinkedList linkedList = new LinkedList();
 
         for (int i = 0; i < 10; i++) {
@@ -249,5 +283,22 @@ public class LinkedList<E> {
 
         System.out.println(linkedList.contains(150));
         System.out.println(linkedList.whileContains(150));
+    }
+
+    private static void test2() {
+        LinkedList<Integer> linkedList = new LinkedList<Integer>();
+        for (int i = 0; i < 5; i++) {
+            linkedList.addFirst(i);
+        }
+        System.out.println(linkedList);
+        Integer res = linkedList.get(3);
+        System.out.println(res);
+        linkedList.add(3, 30);
+        System.out.println(linkedList);
+    }
+
+    public static void main(String[] args) {
+        test2();
+
     }
 }
