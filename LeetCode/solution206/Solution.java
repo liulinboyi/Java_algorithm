@@ -7,18 +7,18 @@ public class Solution {
         ListNode cur = head == null ? null : head;
         ListNode next = cur == null ? null : cur.next;
 
-        // ①
+        // 第一步
         //  prev   cur   next
         //   |      |     |
         // null ->  1 ->  2 -> 3 -> 4 -> 5
 
-        // ②
+        // 第二步
         // 将cur的next指向prev,此时cur与next已断开联系，幸好我们保存着next
         // prev    cur  next
         //   |      |    |
         // null <-  1    2 -> 3 -> 4 -> 5
 
-        // ③
+        // 第三部
         // 此时将cur赋值给prev;
         // 将next赋值给cur;
         // 将next.next赋值给next即cur.next赋值给next
@@ -26,9 +26,9 @@ public class Solution {
         //          |    |     |
         // null <-  1    2 -> 3 -> 4 -> 5
 
-        // 再次进行第②步
+        // 再次进行第二步
 
-        // ④
+        // 第四部
         // 最后链表翻转后为
         // null <- 1 <- 2 <- 3 <- 4 <- 5
 
