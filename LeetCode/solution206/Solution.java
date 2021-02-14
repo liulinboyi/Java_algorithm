@@ -4,8 +4,7 @@ public class Solution {
 
     public static ListNode reverseList(ListNode head) {
         ListNode prev = null;
-        ListNode cur = head == null ? null : head;
-        ListNode next = cur == null ? null : cur.next;
+        ListNode cur = head;
 
         // 第一步
         //  prev   cur   next
@@ -35,23 +34,19 @@ public class Solution {
         while (cur != null) {
             System.out.println("prev:  " + prev);
             System.out.println("cur:  " + cur);
+            ListNode next = cur.next;
             System.out.println("next:  " + next);
             cur.next = prev;
-
             prev = cur;
-            if (next == null) {
-                return prev;
-            }
             cur = next;
-            next = cur.next;
         }
-        return null;
+        return prev;
     }
 
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5};
-//        ListNode listNode = new ListNode(arr);
-        ListNode listNode = new ListNode();
+        ListNode listNode = new ListNode(arr);
+//        ListNode listNode = new ListNode();
         System.out.println(listNode);
         ListNode res = reverseList(listNode);
         System.out.println(res);
