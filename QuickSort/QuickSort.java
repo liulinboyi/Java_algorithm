@@ -1,30 +1,38 @@
 package QuickSort;
 
+import java.util.Random;
+
 public class QuickSort {
     public QuickSort() {
 
     }
 
     public static <E extends Comparable> E[] sort(E[] arr) {
-        sort(arr, 0, arr.length - 1);
+        Random ram = new Random();
+        sort(arr, 0, arr.length - 1, ram);
         return arr;
     }
 
-    private static <E extends Comparable> void sort(E[] arr, int l, int r) {
+    private static <E extends Comparable> void sort(E[] arr, int l, int r, Random ram) {
         if (l >= r) {
             return;
         }
-        int p = partition(arr, l, r);
-        sort(arr, l, p - 1);
-        sort(arr, p + 1, r);
+        int p = partition(arr, l, r, ram);
+        sort(arr, l, p - 1, ram);
+        sort(arr, p + 1, r, ram);
     }
 
-    private static <E extends Comparable> int partition(E[] arr, int l, int r) {
+    private static <E extends Comparable> int partition(E[] arr, int l, int r, Random ra) {
 
         // [l+1,...,j] < v
         // [j+1,...,i-1] >= v
         int j = l;
         int i = j + 1;
+        // 随机索引[l,r]之间
+//        int ram = (int) (l + (Math.random() * (r - l + 1)));
+//        System.out.println(ram);
+        int ram = l + ra.nextInt(r - l + 1);
+        swap(arr, ram, l);
         E v = arr[l];
         while (i <= r) {
             // arr[i] < v
@@ -63,7 +71,11 @@ public class QuickSort {
 //        print(arr);
 
         int count = 10000000;
-        Integer[] arr = ArrayGenerator.generateRandomArray(count);
+//        Integer[] arr = ArrayGenerator.generateRandomArray(count);
+//        SortingHelper.sortTest("QuickSort", arr);
+
+
+        Integer[] arr = ArrayGenerator.generateOrderArray(count);
         SortingHelper.sortTest("QuickSort", arr);
 
 
