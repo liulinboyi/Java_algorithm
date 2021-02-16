@@ -1,0 +1,133 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch InsertSort",
+            "request": "launch",
+            "mainClass": "InsertSort.src.InsertSort",
+            "projectName": "Java_algorithm_a36a7db8"
+        },
+        {
+            "type": "java",
+            "name": "Launch Solution",
+            "request": "launch",
+            "mainClass": "LeetCode.solution203.Solution",
+            "projectName": "Java_algorithm_a36a7db8"
+        },
+        {
+            "type": "java",
+            "name": "Launch Solution1",
+            "request": "launch",
+            "mainClass": "LeetCode.solution203.Solution1",
+            "projectName": "Java_algorithm_a36a7db8"
+        },
+        {
+            "type": "java",
+            "name": "Launch sum",
+            "request": "launch",
+            "mainClass": "LeetCode.solution203.sum",
+            "projectName": "Java_algorithm_a36a7db8"
+        },
+        {
+            "type": "java",
+            "name": "Launch Solution(1)",
+            "request": "launch",
+            "mainClass": "LeetCode.solution206.Solution",
+            "projectName": "Java_algorithm_a36a7db8"
+        },
+        {
+            "type": "java",
+            "name": "Launch Solution1(1)",
+            "request": "launch",
+            "mainClass": "LeetCode.solution206.Solution1",
+            "projectName": "Java_algorithm_a36a7db8"
+        },
+        {
+            "type": "java",
+            "name": "Launch LinkedList",
+            "request": "launch",
+            "mainClass": "LinkedList.LinkedList",
+            "projectName": "Java_algorithm_a36a7db8"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "LinkedList.Main",
+            "projectName": "Java_algorithm_a36a7db8"
+        },
+        {
+            "type": "java",
+            "name": "Launch SelectionSort",
+            "request": "launch",
+            "mainClass": "SelectSort.src.SelectionSort",
+            "projectName": "Java_algorithm_a36a7db8"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main(1)",
+            "request": "launch",
+            "mainClass": "array.src.Main",
+            "projectName": "Java_algorithm_a36a7db8"
+        },
+        {
+            "type": "java",
+            "name": "Launch ArrayQeueue",
+            "request": "launch",
+            "mainClass": "queue.ArrayQeueue",
+            "projectName": "Java_algorithm_a36a7db8"
+        },
+        {
+            "type": "java",
+            "name": "Launch LinkedListQueue",
+            "request": "launch",
+            "mainClass": "queue.LinkedListQueue",
+            "projectName": "Java_algorithm_a36a7db8"
+        },
+        {
+            "type": "java",
+            "name": "Launch LoopQueue",
+            "request": "launch",
+            "mainClass": "queue.LoopQueue",
+            "projectName": "Java_algorithm_a36a7db8"
+        },
+        {
+            "type": "java",
+            "name": "Launch LinkedListStack",
+            "request": "launch",
+            "mainClass": "stack.LinkedListStack",
+            "projectName": "Java_algorithm_a36a7db8"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main(2)",
+            "request": "launch",
+            "mainClass": "stack.Main",
+            "projectName": "Java_algorithm_a36a7db8"
+        },
+        {
+            "type": "java",
+            "name": "Launch Solution(2)",
+            "request": "launch",
+            "mainClass": "stack.Solution",
+            "projectName": "Java_algorithm_a36a7db8"
+        },
+        {
+            "type": "java",
+            "name": "Launch LinerSearch",
+            "request": "launch",
+            "mainClass": "线性查找.src.LinerSearch",
+            "projectName": "Java_algorithm_a36a7db8"
+        }
+    ]
+}
