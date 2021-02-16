@@ -1,5 +1,6 @@
 package QuickSort;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class QuickSort {
@@ -71,12 +72,14 @@ public class QuickSort {
 //        print(arr);
 
         int count = 10000000;
-//        Integer[] arr = ArrayGenerator.generateRandomArray(count);
-//        SortingHelper.sortTest("QuickSort", arr);
-
-
-        Integer[] arr = ArrayGenerator.generateOrderArray(count);
+        Integer[] arr = ArrayGenerator.generateRandomArray(count);
         SortingHelper.sortTest("QuickSort", arr);
+        Integer[] arr1 = Arrays.copyOf(arr, arr.length);
+        SortingHelper.sortTest("MergeSort", arr1);
+
+
+//         Integer[] arr = ArrayGenerator.generateOrderArray(count);
+//         SortingHelper.sortTest("QuickSort", arr);
 
 
     }
