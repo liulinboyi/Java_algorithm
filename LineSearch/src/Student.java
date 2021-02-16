@@ -1,4 +1,4 @@
-package 线性查找.src;
+package LineSearch.src;
 
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
-package 线性查找.src;
+package LineSearch.src;
 
 public class LinerSearch<E> {
     // 将构造函数设置私有
