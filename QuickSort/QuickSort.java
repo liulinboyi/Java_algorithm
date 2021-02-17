@@ -142,7 +142,7 @@ public class QuickSort {
         swap(arr, ram, l);
 
         // arr[l + 1, lt] < v
-        // arr[lt + 1, i-1] == v
+        // arr[lt + 1, i-1] == v  arr[l + 1, l]
         // arr[gt, r] > v
 
         // 初始时，数组集合元素都为空，左边界值比右边界值大
