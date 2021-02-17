@@ -14,11 +14,11 @@ public class ArrayGenerator {
         return arr;
     }
 
-    public static Integer[] generateRandomArray(int n) {
+    public static Integer[] generateRandomArray(int n, int bound) {
         Random random = new Random();
         Integer[] arr = new Integer[n];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = random.nextInt(Integer.MAX_VALUE);
+            arr[i] = random.nextInt(bound);
         }
         return arr;
     }

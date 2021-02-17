@@ -29,6 +29,8 @@ public class SortingHelper {
             result = MergeSort.sort(arr);
         } else if (sortName.equals("QuickSort")) {
             result = QuickSort.sort(arr);
+        } else if (sortName.equals("QuickSort2")) {
+            result = QuickSort.sort2ways(arr);
         }
         Long endTime = System.nanoTime();
         if (!SortingHelper.isSorted(result)) {
