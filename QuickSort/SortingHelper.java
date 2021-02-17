@@ -31,6 +31,8 @@ public class SortingHelper {
             result = QuickSort.sort(arr);
         } else if (sortName.equals("QuickSort2")) {
             result = QuickSort.sort2ways(arr);
+        } else if (sortName.equals("QuickSort3")) {
+            result = QuickSort.sort3ways(arr);
         }
         Long endTime = System.nanoTime();
         if (!SortingHelper.isSorted(result)) {

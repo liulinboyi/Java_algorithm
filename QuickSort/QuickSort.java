@@ -77,13 +77,14 @@ public class QuickSort {
 
     private static <E extends Comparable> int partition2(E[] arr, int l, int r, Random ra) {
 
-        // [l+1,...,j] < v
-        // [j+1,...,i-1] >= v
         // 随机索引[l,r]之间
         // int ram = (int) (l + (Math.random() * (r - l + 1)));
         // System.out.println(ram);
         int ram = l + ra.nextInt(r - l + 1);
         swap(arr, ram, l);
+
+        // arr[l + 1, i-1] <= v
+        // arr[j+1,r] >= v
 
         int i = l + 1;
         int j = r;
@@ -104,6 +105,70 @@ public class QuickSort {
         }
         swap(arr, l, j);
         return j;
+    }
+
+
+    /**
+     * 三路快速排序算法
+     * 对有大量相同元素的数据，更有优势，更快，达到O(n)
+     *
+     * @param arr
+     * @param <E>
+     * @return
+     */
+    public static <E extends Comparable> E[] sort3ways(E[] arr) {
+        Random ram = new Random();
+        sort3ways(arr, 0, arr.length - 1, ram);
+        return arr;
+    }
+
+    private static <E extends Comparable> void sort3ways(E[] arr, int l, int r, Random ram) {
+        if (l >= r) {
+            return;
+        }
+        int[] p = partition3(arr, l, r, ram);
+        int lt = p[0];
+        int gt = p[1];
+        sort3ways(arr, l, lt - 1, ram); // 对小于标定点的区间进行递归
+        sort3ways(arr, gt, r, ram); // 对大于标定点的区间进行递归
+    }
+
+    private static <E extends Comparable> int[] partition3(E[] arr, int l, int r, Random ra) {
+
+        // 随机索引[l,r]之间
+        // int ram = (int) (l + (Math.random() * (r - l + 1)));
+        // System.out.println(ram);
+        int ram = l + ra.nextInt(r - l + 1);
+        swap(arr, ram, l);
+
+        // arr[l + 1, lt] < v
+        // arr[lt + 1, i-1] == v
+        // arr[gt, r] > v
+
+        // 初始时，数组集合元素都为空，左边界值比右边界值大
+        int lt = l;
+        int i = l + 1;
+        int gt = r + 1;
+
+        while (i < gt) {
+            if (arr[i].compareTo(arr[l]) < 0) {
+                lt++;
+                swap(arr, lt, i);
+                i++;
+            } else if (arr[i].compareTo(arr[l]) > 0) {
+                gt--;
+                swap(arr, gt, i);
+            } else { // arr[i] == arr[l]
+                i++;
+            }
+        }
+        swap(arr, l, lt);
+        // after this step
+        // arr[l, lt - 1] < v
+        // arr[lt, gt-1] == v
+        // arr[gt, r] > v
+
+        return new int[]{lt, gt};
     }
 
     private static <E> void swap(E[] arr, int i, int j) {
@@ -130,14 +195,16 @@ public class QuickSort {
 //        sort(arr);
 //        print(arr);
 
-        int count = 100000;
-        Integer[] arr = ArrayGenerator.generateRandomArray(count, 1);
+        int count = 10000000;
+        Integer[] arr = ArrayGenerator.generateRandomArray(count, count);
         Integer[] arr1 = Arrays.copyOf(arr, arr.length);
         Integer[] arr2 = Arrays.copyOf(arr, arr.length);
-
-        SortingHelper.sortTest("QuickSort2", arr);
-        SortingHelper.sortTest("QuickSort", arr1);
-        SortingHelper.sortTest("MergeSort", arr2);
+        Integer[] arr3 = Arrays.copyOf(arr, arr.length);
+        System.out.println("generate ok!");
+        SortingHelper.sortTest("QuickSort3", arr);
+        SortingHelper.sortTest("QuickSort2", arr1);
+        SortingHelper.sortTest("QuickSort", arr2);
+        SortingHelper.sortTest("MergeSort", arr3);
 
 
 //         Integer[] arr = ArrayGenerator.generateOrderArray(count);
