@@ -37,6 +37,7 @@ public class QuickSort {
         // 随机索引[l,r]之间
 //        int ram = (int) (l + (Math.random() * (r - l + 1)));
 //        System.out.println(ram);
+        // random 默认右边为开区间
         int ram = l + ra.nextInt(r - l + 1);
         swap(arr, ram, l);
         E v = arr[l];
