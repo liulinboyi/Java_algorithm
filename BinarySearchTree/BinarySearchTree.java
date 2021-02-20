@@ -46,6 +46,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
         if (root == null) {
             root = new Node(e);
             size++;
+            return;
         }
         Node childRoot = root;
         while (true) {
@@ -76,34 +77,25 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
     // 向以node为根的二分搜索树种插入元素e，递归算法
     public void addREC(E e) {
-        if (root == null) {
-            root = new Node(e);
-            size++;
-        } else {
-            add(root, e);
-        }
+        root = add(root, e);
     }
 
     // 向以node为根的二分搜索树种插入元素e，递归算法
-    private void add(Node node, E e) {
+    // null 本身也是二叉树
+    // 返回插入新节点后，二分搜索树的根
+    private Node add(Node node, E e) {
         // 递归终止条件
-        if (e.equals(node.e)) {
-            return;
-        } else if (e.compareTo(node.e) < 0 && node.left == null) {
-            node.left = new Node(e);
+        if (node == null) {
             size++;
-            return;
-        } else if (e.compareTo(node.e) > 0 && node.right == null) {
-            node.right = new Node(e);
-            size++;
-            return;
+            return new Node(e);
         }
 
         if (e.compareTo(node.e) < 0) {
-            add(node.left, e);
+            node.left = add(node.left, e);
         } else if (e.compareTo(node.e) > 0) {
-            add(node.right, e);
+            node.right = add(node.right, e);
         }
+        return node;
     }
 
     @Override
@@ -116,19 +108,19 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
     public static void main(String[] args) {
         BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
-//        tree.add(10);
-//        tree.add(9);
-//        tree.add(11);
-//        tree.add(12);
-//        tree.add(6);
-//        tree.add(6);
+        tree.add(10);
+        tree.add(9);
+        tree.add(11);
+        tree.add(12);
+        tree.add(6);
+        tree.add(6);
 
-        tree.addREC(10);
-        tree.addREC(9);
-        tree.addREC(11);
-        tree.addREC(12);
-        tree.addREC(6);
-        tree.addREC(6);
+//        tree.addREC(10);
+//        tree.addREC(9);
+//        tree.addREC(11);
+//        tree.addREC(12);
+//        tree.addREC(6);
+//        tree.addREC(6);
         System.out.println(tree);
     }
 }
