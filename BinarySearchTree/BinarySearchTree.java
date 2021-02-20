@@ -152,6 +152,39 @@ public class BinarySearchTree<E extends Comparable<E>> {
         // 前序遍历 结束
     }
 
+    // 中序遍历
+    // 遍历结果是，所有可比较元素，排序后的结果，所以二分搜索树有时又被称为排序树
+    public void inOrder() {
+        inOrder(root);
+    }
+
+    private void inOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        // 访问节点
+        // 中序遍历 开始
+        inOrder(node.left);
+        System.out.println(node.e);
+        inOrder(node.right);
+        // 中序遍历 结束
+    }
+
+    // 二分搜索树，后序遍历
+    public void postOrder() {
+        postOrder(root);
+    }
+
+    private void postOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+
+        postOrder(node.left);
+        postOrder(node.right);
+        System.out.println(node.e);
+    }
+
     private String generateDepthString(int depth) {
         StringBuilder s = new StringBuilder();
         for (int i = 0; i < depth; i++) {
@@ -162,10 +195,10 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
     private void generateBSTString(Node node, int depth, StringBuilder str, String p) {
         if (node == null) {
-            str.append(generateDepthString(depth) + "null" + " " + p + " " + "\n");
+            str.append(generateDepthString(depth)).append("null").append(" ").append(p).append(" ").append("\n");
             return;
         }
-        str.append(generateDepthString(depth) + node.e + " " + p + " " + "\n");
+        str.append(generateDepthString(depth)).append(node.e).append(" ").append(p).append(" ").append("\n");
         generateBSTString(node.left, depth + 1, str, "left");
         generateBSTString(node.right, depth + 1, str, "right");
     }

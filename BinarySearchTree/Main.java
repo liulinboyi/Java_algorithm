@@ -7,7 +7,13 @@ public class Main {
         for (int num : nums) {
             bst.add(num);
         }
-        bst.preOrder();
+        //       5
+        //   3       6
+        // 2   4         8
+
+//        bst.preOrder(); // 前序遍历
+//        bst.inOrder(); // 中序遍历
+        bst.postOrder(); // 后序遍历
         System.out.println();
         System.out.println(bst);
     }
