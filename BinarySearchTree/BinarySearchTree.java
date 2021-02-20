@@ -49,7 +49,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
             return;
         }
         Node childRoot = root;
-        while (true) {
+        while (childRoot != null) {
             // 插入节点值大于根节点，则向右子树添加
             if (e.compareTo(childRoot.e) > 0) {
                 if (childRoot.right == null) {
@@ -98,6 +98,42 @@ public class BinarySearchTree<E extends Comparable<E>> {
         return node;
     }
 
+    public boolean contains(E e) {
+        Node childRoot = root;
+        while (childRoot != null) {
+            if (e.compareTo(childRoot.e) == 0) {
+                return true;
+            } else if (e.compareTo(childRoot.e) > 0) {
+                // 右子树
+                childRoot = childRoot.right;
+            } else {
+                // 左子树
+                childRoot = childRoot.left;
+            }
+        }
+        return false;
+    }
+
+    public boolean containsREC(E e) {
+        return contains(root, e);
+    }
+
+    public boolean contains(Node node, E e) {
+        if (node == null) {
+            return false;
+        }
+
+        if (e.compareTo(node.e) > 0) {
+            // 右子树
+            return contains(node.right, e);
+        } else if (e.compareTo(node.e) < 0) {
+            // 左子树
+            return contains(node.left, e);
+        } else {
+            return true;
+        }
+    }
+
     @Override
     public String toString() {
         return "BinarySearchTree{" +
@@ -114,6 +150,9 @@ public class BinarySearchTree<E extends Comparable<E>> {
         tree.add(12);
         tree.add(6);
         tree.add(6);
+//        boolean res = tree.contains(7);
+        boolean res = tree.containsREC(9);
+        System.out.println(res);
 
 //        tree.addREC(10);
 //        tree.addREC(9);
