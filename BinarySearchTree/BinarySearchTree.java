@@ -139,6 +139,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
     // 非递归前序遍历
+    // 深度优先遍历
     public void preOrderNR() {
 //        ArrayStack<Node> stack = new ArrayStack<Node>();
         Stack<Node> stack = new Stack<Node>();
