@@ -1,5 +1,9 @@
 package BinarySearchTree;
 
+import stack.ArrayStack;
+
+import java.util.Stack;
+
 /**
  * 二分搜索树，存储的数据必须可以被比较（局限性或者说是代价）
  */
@@ -131,6 +135,24 @@ public class BinarySearchTree<E extends Comparable<E>> {
             return contains(node.left, e);
         } else {
             return true;
+        }
+    }
+
+    // 非递归前序遍历
+    public void preOrderNR() {
+//        ArrayStack<Node> stack = new ArrayStack<Node>();
+        Stack<Node> stack = new Stack<Node>();
+        stack.push(root);
+
+        while (!stack.isEmpty()) {
+            Node top = stack.pop();
+            System.out.println(top.e);
+            if (top.right != null) {
+                stack.push(top.right);
+            }
+            if (top.left != null) {
+                stack.push(top.left);
+            }
         }
     }
 

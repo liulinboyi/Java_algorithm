@@ -13,7 +13,8 @@ public class Main {
 
 //        bst.preOrder(); // 前序遍历
 //        bst.inOrder(); // 中序遍历
-        bst.postOrder(); // 后序遍历
+//        bst.postOrder(); // 后序遍历
+        bst.preOrderNR();
         System.out.println();
         System.out.println(bst);
     }
