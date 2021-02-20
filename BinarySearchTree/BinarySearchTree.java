@@ -171,6 +171,9 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
     // 二分搜索树，后序遍历
+    // 应用于，内存释放，先释放当前节点的孩子节点释放完，再来释放节点本身
+    // 对于一些树结构的问题，也需要节点的孩子节点求解出答案，用孩子节点的答案组合成这个节点的答案
+    // 比如分治算法，回溯算法、动态规划算法等
     public void postOrder() {
         postOrder(root);
     }
