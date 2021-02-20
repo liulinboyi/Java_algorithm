@@ -134,25 +134,70 @@ public class BinarySearchTree<E extends Comparable<E>> {
         }
     }
 
+    // 前序遍历
+    public void preOrder() {
+        preOrder(root);
+    }
+
+    // traverse遍历
+    private void preOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        // 访问节点
+        // 前序遍历 开始
+        System.out.println(node.e);
+        preOrder(node.left);
+        preOrder(node.right);
+        // 前序遍历 结束
+    }
+
+    private String generateDepthString(int depth) {
+        StringBuilder s = new StringBuilder();
+        for (int i = 0; i < depth; i++) {
+            s.append("---");
+        }
+        return s.toString();
+    }
+
+    private void generateBSTString(Node node, int depth, StringBuilder str, String p) {
+        if (node == null) {
+            str.append(generateDepthString(depth) + "null" + " " + p + " " + "\n");
+            return;
+        }
+        str.append(generateDepthString(depth) + node.e + " " + p + " " + "\n");
+        generateBSTString(node.left, depth + 1, str, "left");
+        generateBSTString(node.right, depth + 1, str, "right");
+    }
+
     @Override
     public String toString() {
-        return "BinarySearchTree{" +
-                "root=" + root +
-                ", size=" + size +
-                '}';
+        StringBuilder str = new StringBuilder();
+        generateBSTString(root, 0, str, "");
+        return str.toString();
+//        return "BinarySearchTree{" +
+//                "root=" + root +
+//                ", size=" + size +
+//                '}';
     }
 
     public static void main(String[] args) {
         BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
-        tree.add(10);
+        tree.add(13);
         tree.add(9);
-        tree.add(11);
-        tree.add(12);
+        tree.add(16);
+        tree.add(18);
         tree.add(6);
         tree.add(6);
+        tree.add(10);
+        tree.add(15);
+        //           13
+        //     9           16
+        // 6      10   15     18
+
 //        boolean res = tree.contains(7);
-        boolean res = tree.containsREC(9);
-        System.out.println(res);
+//        boolean res = tree.containsREC(9);
+//        System.out.println(res);
 
 //        tree.addREC(10);
 //        tree.addREC(9);
@@ -161,5 +206,6 @@ public class BinarySearchTree<E extends Comparable<E>> {
 //        tree.addREC(6);
 //        tree.addREC(6);
         System.out.println(tree);
+        tree.preOrder();
     }
 }
