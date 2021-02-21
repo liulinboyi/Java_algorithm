@@ -1,8 +1,5 @@
 package BinarySearchTree;
 
-import queue.LinkedListQueue;
-import stack.ArrayStack;
-
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
@@ -247,6 +244,21 @@ public class BinarySearchTree<E extends Comparable<E>> {
             return node.e;
         }
         return minimum(node.left);
+    }
+
+    // 寻找二分搜索树的最大元素
+    public E maximum() {
+        if (size == 0) {
+            throw new IllegalArgumentException("The BST is empty!");
+        }
+        return maximum(root);
+    }
+
+    private E maximum(Node node) {
+        if (node.right == null) {
+            return node.e;
+        }
+        return maximum(node.right);
     }
 
     private String generateDepthString(int depth) {
