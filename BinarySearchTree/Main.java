@@ -3,10 +3,10 @@ package BinarySearchTree;
 public class Main {
     public static void main(String[] args) {
         BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
-        int[] nums = {5, 3, 6, 8, 4, 2};
-        for (int num : nums) {
-            bst.add(num);
-        }
+//        int[] nums = {5, 3, 6, 8, 4, 2};
+//        for (int num : nums) {
+//            bst.add(num);
+//        }
         //       5
         //   3       6
         // 2   4         8
@@ -34,21 +34,30 @@ public class Main {
 //        System.out.println(min);
 
 
-        int min = bst.removeMaxi();
-        System.out.println(min);
+//        int min = bst.removeMaxi();
+//        System.out.println(min);
+//
+//        min = bst.removeMaxi();
+//        System.out.println(min);
+//
+//        min = bst.removeMaxi();
+//        System.out.println(min);
+//
+//        min = bst.removeMaxi();
+//        System.out.println(min);
 
-        min = bst.removeMaxi();
-        System.out.println(min);
-
-        min = bst.removeMaxi();
-        System.out.println(min);
-
-        min = bst.removeMaxi();
-        System.out.println(min);
+//        bst.remove(3);
+//
+//
+//        System.out.println();
+//        System.out.println(bst);
+//        System.out.println(bst.size());
 
 
-        System.out.println();
+        int[] nums = {1, 2, 3, 4, 5, 6};
+        for (int num : nums) {
+            bst.add(num);
+        }
         System.out.println(bst);
-        System.out.println(bst.size());
     }
 }

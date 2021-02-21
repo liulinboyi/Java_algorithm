@@ -12,11 +12,14 @@ public class BinarySearchTree<E extends Comparable<E>> {
         public E e;
         public Node left;
         public Node right;
+        public int NodeSize;
+
 
         public Node(E e) {
             this.e = e;
             left = null;
             right = null;
+            NodeSize = 1;
         }
 
         @Override
@@ -37,6 +40,18 @@ public class BinarySearchTree<E extends Comparable<E>> {
         size = 0;
     }
 
+    private int NodeSize(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            return node.NodeSize;
+        }
+    }
+
+    public int NodeSize() {
+        return NodeSize(root);
+    }
+
     public int size() {
         return size;
     }
@@ -55,11 +70,13 @@ public class BinarySearchTree<E extends Comparable<E>> {
         Node childRoot = root;
         while (childRoot != null) {
             // 插入节点值大于根节点，则向右子树添加
+            // 寻找节点该放置的位置时，每访问一次节点，以该节点为根的元素数量加1
+            childRoot.NodeSize++;
             if (e.compareTo(childRoot.e) > 0) {
                 if (childRoot.right == null) {
                     childRoot.right = new Node(e);
                     size++;
-                    break;
+                    return;
                 } else {
                     childRoot = childRoot.right;
                 }
@@ -68,13 +85,13 @@ public class BinarySearchTree<E extends Comparable<E>> {
                 if (childRoot.left == null) {
                     childRoot.left = new Node(e);
                     size++;
-                    break;
+                    return;
                 } else {
                     childRoot = childRoot.left;
                 }
                 // 插入节点值等于于根节点，则退出，此插入不包含相等情况
             } else {
-                break;
+                return;
             }
         }
     }
@@ -99,6 +116,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
         } else if (e.compareTo(node.e) > 0) {
             node.right = add(node.right, e);
         }
+        node.NodeSize = NodeSize(node.left) + NodeSize(node.right) + 1;
         return node;
     }
 
@@ -236,12 +254,12 @@ public class BinarySearchTree<E extends Comparable<E>> {
         if (size == 0) {
             throw new IllegalArgumentException("The BST is empty!");
         }
-        return minimum(root);
+        return minimum(root).e;
     }
 
-    private E minimum(Node node) {
+    private Node minimum(Node node) {
         if (node.left == null) {
-            return node.e;
+            return node;
         }
         return minimum(node.left);
     }
@@ -329,6 +347,56 @@ public class BinarySearchTree<E extends Comparable<E>> {
             return res;
         }
         return removeMin(node.left, node);
+    }
+
+    public void remove(E e) {
+        remove(root, e);
+    }
+
+    // 删掉以node为根的二分搜索树中值为e的节点，递归算法
+    // 返回删除节点后新的二分搜索树的根
+    private Node remove(Node node, E e) {
+        if (node == null) {
+            return null;
+        }
+
+        if (e.compareTo(node.e) < 0) {
+            node.left = remove(node.left, e);
+            return node;
+        } else if (e.compareTo(node.e) > 0) {
+            node.right = remove(node.right, e);
+            return node;
+        } else { // e == node.e
+            // 待删除节点左子树为null
+            if (node.left == null) {
+                Node rightNode = node.right;
+                node.right = null;
+                size--;
+                return rightNode;
+            }
+            // 待删除节点右子树为null
+            if (node.right == null) {
+                Node leftNode = node.left;
+                node.left = null;
+                size--;
+                return leftNode;
+            }
+
+            // 待删除节点，左右子树都不为null
+            // 找到待删除节点大的最小节点，即待删除节点右子树的最小节点
+            // 用这个节点顶替待删除节点位置
+            Node successor = minimum(node.right); // 后继者
+            // 删除右子树的最小节点，赋值给后继者的右子树
+            successor.right = removeMinOther(node.right);
+            successor.left = node.left;
+
+            node.left = null;
+            node.right = null;
+
+            return successor;
+
+        }
+
     }
 
     private String generateDepthString(int depth) {
