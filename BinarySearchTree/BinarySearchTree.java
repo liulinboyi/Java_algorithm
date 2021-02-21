@@ -1,7 +1,10 @@
 package BinarySearchTree;
 
+import queue.LinkedListQueue;
 import stack.ArrayStack;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -209,6 +212,26 @@ public class BinarySearchTree<E extends Comparable<E>> {
         postOrder(node.left);
         postOrder(node.right);
         System.out.println(node.e);
+    }
+
+    // 层序遍历
+    // 广度优先遍历
+    // 如果做图的遍历，要做记录，查看当前节点是否遍历过，否则会产生重复（一个节点的父亲节点可能有多个）
+    // 树结构不存在这个情况
+    public void levelOrder() {
+        Queue<Node> queue = new LinkedList<Node>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            Node cur = queue.poll();
+            System.out.println(cur.e);
+            if (cur.left != null) {
+                queue.offer(cur.left);
+            }
+            if (cur.right != null) {
+                queue.offer(cur.right);
+            }
+        }
     }
 
     private String generateDepthString(int depth) {
