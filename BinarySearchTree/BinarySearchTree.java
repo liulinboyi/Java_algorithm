@@ -234,6 +234,21 @@ public class BinarySearchTree<E extends Comparable<E>> {
         }
     }
 
+    // 寻找二分搜索树的最小元素
+    public E minimum() {
+        if (size == 0) {
+            throw new IllegalArgumentException("The BST is empty!");
+        }
+        return minimum(root);
+    }
+
+    private E minimum(Node node) {
+        if (node.left == null) {
+            return node.e;
+        }
+        return minimum(node.left);
+    }
+
     private String generateDepthString(int depth) {
         StringBuilder s = new StringBuilder();
         for (int i = 0; i < depth; i++) {

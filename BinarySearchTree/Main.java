@@ -15,7 +15,9 @@ public class Main {
 //        bst.inOrder(); // 中序遍历
 //        bst.postOrder(); // 后序遍历
 //        bst.preOrderNR();
-        bst.levelOrder();
+//        bst.levelOrder();
+        int mini = bst.minimum();
+        System.out.println(mini);
         System.out.println();
         System.out.println(bst);
     }
