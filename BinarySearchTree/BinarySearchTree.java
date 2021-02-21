@@ -261,6 +261,76 @@ public class BinarySearchTree<E extends Comparable<E>> {
         return maximum(node.right);
     }
 
+    // 从二分搜索树中删除最小值，返回最小值
+    public E removeMinOther() {
+        E res = minimum();
+        root = removeMinOther(root);
+        return res;
+    }
+
+    // 删除以root为根的二分搜索树中的最小节点
+    // 返回删除节点后的新的二分搜索树
+    private Node removeMinOther(Node node) {
+        if (node.left == null) {
+            Node rightNode = node.right;
+            node.right = null;
+            size--;
+            return rightNode;
+        }
+        node.left = removeMinOther(node.left);
+        return node;
+    }
+
+    // 从二分搜索树中删除最大值，返回最大值
+    public E removeMaxi() {
+        E res = maximum();
+        root = removeMaxi(root);
+        return res;
+    }
+
+    // 删除以root为根的二分搜索树中的最大节点
+    // 返回删除节点后的新的二分搜索树
+    private Node removeMaxi(Node node) {
+        if (node.right == null) {
+            Node leftNode = node.left;
+            node.left = null;
+            size--;
+            return leftNode;
+        }
+        node.right = removeMaxi(node.right);
+        return node;
+    }
+
+    // 从二分搜索树中删除最小的节点，返回被删除节点
+    public E removeMin() {
+        if (size == 0) {
+            throw new IndexOutOfBoundsException("The BST is empty!");
+        }
+        Node dummyNode = new Node(null);
+        dummyNode.left = root;
+        E res = removeMin(dummyNode.left, dummyNode);
+        root = dummyNode.left;
+        return res;
+    }
+
+    private E removeMin(Node node, Node prev) {
+        if (node.left == null) {
+            E res = node.e;
+            if (node.right == null) {
+//                node.e = null;
+                prev.left = null;
+            } else {
+                Node next = node.right;
+                node.right = null;
+//                node.e = null;
+                prev.left = next;
+            }
+            size--;
+            return res;
+        }
+        return removeMin(node.left, node);
+    }
+
     private String generateDepthString(int depth) {
         StringBuilder s = new StringBuilder();
         for (int i = 0; i < depth; i++) {
@@ -293,13 +363,13 @@ public class BinarySearchTree<E extends Comparable<E>> {
     public static void main(String[] args) {
         BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
         tree.add(13);
-        tree.add(9);
-        tree.add(16);
-        tree.add(18);
-        tree.add(6);
-        tree.add(6);
-        tree.add(10);
-        tree.add(15);
+//        tree.add(9);
+//        tree.add(16);
+//        tree.add(18);
+//        tree.add(6);
+//        tree.add(6);
+//        tree.add(10);
+//        tree.add(15);
         //           13
         //     9           16
         // 6      10   15     18
@@ -315,6 +385,9 @@ public class BinarySearchTree<E extends Comparable<E>> {
 //        tree.addREC(6);
 //        tree.addREC(6);
         System.out.println(tree);
+        tree.preOrder();
+        int min = tree.removeMin();
+        System.out.println(min);
         tree.preOrder();
     }
 }

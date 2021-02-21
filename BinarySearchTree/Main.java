@@ -16,10 +16,39 @@ public class Main {
 //        bst.postOrder(); // 后序遍历
 //        bst.preOrderNR();
 //        bst.levelOrder();
-        int mini = bst.minimum();
-        int max = bst.maximum();
-        System.out.println("Mini: " + mini + " " + "Max: " + max);
+
+//        int mini = bst.minimum();
+//        int max = bst.maximum();
+//        System.out.println("Mini: " + mini + " " + "Max: " + max);
+
+//        int min = bst.removeMin();
+//        System.out.println(min);
+//
+//        min = bst.removeMin();
+//        System.out.println(min);
+//
+//        min = bst.removeMin();
+//        System.out.println(min);
+//
+//        min = bst.removeMin();
+//        System.out.println(min);
+
+
+        int min = bst.removeMaxi();
+        System.out.println(min);
+
+        min = bst.removeMaxi();
+        System.out.println(min);
+
+        min = bst.removeMaxi();
+        System.out.println(min);
+
+        min = bst.removeMaxi();
+        System.out.println(min);
+
+
         System.out.println();
         System.out.println(bst);
+        System.out.println(bst.size());
     }
 }
