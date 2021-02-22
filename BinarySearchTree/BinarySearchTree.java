@@ -399,6 +399,22 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
     }
 
+    private Node select(Node x, int k) {
+        if (x == null) return null;
+        int t = NodeSize(x.left);
+        if (t > k) {
+            return select(x.left, k);
+        } else if (t < k) {
+            return select(x.right, k - t - 1);
+        } else {
+            return x;
+        }
+    }
+
+    public E select(int k) {
+        return select(root, k).e;
+    }
+
     private String generateDepthString(int depth) {
         StringBuilder s = new StringBuilder();
         for (int i = 0; i < depth; i++) {

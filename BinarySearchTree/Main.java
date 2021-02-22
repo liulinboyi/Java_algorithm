@@ -3,13 +3,16 @@ package BinarySearchTree;
 public class Main {
     public static void main(String[] args) {
         BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
-//        int[] nums = {5, 3, 6, 8, 4, 2};
-//        for (int num : nums) {
-//            bst.add(num);
-//        }
+        int[] nums = {5, 3, 6, 8, 4, 2};
+        for (int num : nums) {
+            bst.add(num);
+        }
         //       5
         //   3       6
         // 2   4         8
+
+        int res = bst.select(3);
+        System.out.println(res);
 
 //        bst.preOrder(); // 前序遍历
 //        bst.inOrder(); // 中序遍历
@@ -54,10 +57,10 @@ public class Main {
 //        System.out.println(bst.size());
 
 
-        int[] nums = {1, 2, 3, 4, 5, 6};
-        for (int num : nums) {
-            bst.add(num);
-        }
-        System.out.println(bst);
+//        int[] nums = {1, 2, 3, 4, 5, 6};
+//        for (int num : nums) {
+//            bst.add(num);
+//        }
+//        System.out.println(bst);
     }
 }
