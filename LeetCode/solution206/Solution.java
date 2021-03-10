@@ -9,7 +9,7 @@ public class Solution {
         // 第一步
         //  prev   cur   next
         //   |      |     |
-        // null ->  1 ->  2 -> 3 -> 4 -> 5
+        // null     1 ->  2 -> 3 -> 4 -> 5
 
         // 第二步
         // 将cur的next指向prev,此时cur与next已断开联系，幸好我们保存着next
