@@ -22,4 +22,8 @@
 
 ## [栈](./stack/ArrayStack.java)
 
+## [布隆过滤器（Bloom Filter）](./Bloomfilter/Bloomfilter.java)
+
+## [LRUCache](./LRUCache/LRUCache.java)
+
 ## [LeetCode](./LeetCode)
