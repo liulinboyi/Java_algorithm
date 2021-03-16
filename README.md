@@ -26,4 +26,6 @@
 
 ## [LRUCache](./LRUCache/LRUCache.java)
 
+## [KMP](./KMP/KMP.java)
+
 ## [LeetCode](./LeetCode)
